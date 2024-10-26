@@ -4,19 +4,20 @@ import java.util.List;
 public class DVD {
     String name;
     String description;
-    int price;
+    double price;
     int quantityInStock;
     int rating;
     String genre;
     int releaseDate;
     String category;
+    String author;
 
-    public DVD(String name) { 
-        this.name = name; 
-    }
-    
-    public DVD(String genre) { 
-        this.genre = genre; 
+    public DVD(String name, String genre, String author, int releaseDate, double price) {
+        this.name = name;
+        this.genre = genre;
+        this.author = author;
+        this.releaseDate = releaseDate;
+        this.price = price;
     }
 
     public DVD(String name, String description, int price, int quantityInStock, int rating, String genre, int releaseDate) {
@@ -34,6 +35,12 @@ public class DVD {
         this.price = price;
     }
 
+    public DVD(String name, String genre, double price) {
+        this.name = name;
+        this.price = price;
+        this.genre = genre;
+    }
+
     public DVD(String name, String genre, int releaseDate) {
         this.name = name;
         this.genre = genre;
@@ -48,7 +55,7 @@ public class DVD {
         return description;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
