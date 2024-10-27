@@ -1,4 +1,5 @@
 package Lab02.Code;
+
 import java.util.List;
 
 public class DVD {
@@ -20,7 +21,8 @@ public class DVD {
         this.price = price;
     }
 
-    public DVD(String name, String description, int price, int quantityInStock, int rating, String genre, int releaseDate) {
+    public DVD(String name, String description, int price, int quantityInStock, int rating, String genre,
+            int releaseDate) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -63,22 +65,16 @@ public class DVD {
         return quantityInStock;
     }
 
-    public void updateQuantity() {
-    }
-
-    public void calculateAverageRating() {
-    }
-    
     public void updateQuantity(int quantity) {
         quantityInStock += quantity;
-        System.out.println("Số lượng DVD '" + name + "' đã được cập nhật. Số lượng hiện tại: " + quantityInStock);
+        System.out.println("Quantity of DVD '" + name + "' updated. Current quantity: " + quantityInStock);
     }
 
     public void checkAvailability() {
         if (quantityInStock > 0) {
-            System.out.println("DVD '" + name + "' hiện đang có sẵn.");
+            System.out.println("DVD '" + name + "' is currently available.");
         } else {
-            System.out.println("DVD '" + name + "' hiện đang hết hàng.");
+            System.out.println("DVD '" + name + "' is currently out of stock.");
         }
     }
 
@@ -92,22 +88,21 @@ public class DVD {
             sum += r;
         }
         rating = sum / ratings.size();
-        System.out.println("Đánh giá trung bình của DVD '" + name + "': " + rating);
+        System.out.println("Average rating of DVD '" + name + "': " + rating);
     }
 
     public void displayDVDInfo() {
-        System.out.println("Thông tin DVD:");
-        System.out.println("- Tên: " + name);
-        System.out.println("- Mô tả: " + description);
-        System.out.println("- Giá: " + price);
-        System.out.println("- Số lượng tồn kho: " + quantityInStock);
-        System.out.println("- Đánh giá: " + rating);
-        System.out.println("- Thể loại: " + genre);
-        System.out.println("- Năm phát hành: " + releaseDate);
+        System.out.println("DVD Information:");
+        System.out.println("- Title: " + name);
+        System.out.println("- Description: " + description);
+        System.out.println("- Price: " + price);
+        System.out.println("- Quantity in stock: " + quantityInStock);
+        System.out.println("- Rating: " + rating);
+        System.out.println("- Genre: " + genre);
+        System.out.println("- Release year: " + releaseDate);
     }
 
     public String getGenre() {
-        return genre; 
+        return genre;
     }
 }
-

@@ -14,21 +14,21 @@ public class Cart {
             if (dvd.getName().equals(dvdTitle)) {
                 listDVDInCart.remove(i);
                 quantityOrder--;
-                System.out.println("Đã xóa DVD '" + dvdTitle + "' khỏi giỏ hàng.");
+                System.out.println("Removed DVD '" + dvdTitle + "' from cart.");
                 return;
             }
         }
-        System.out.println("Không tìm thấy DVD '" + dvdTitle + "' trong giỏ hàng.");
+        System.out.println("DVD '" + dvdTitle + "' not found in cart.");
     }
 
     public void addDigitalVideoDisc(DVD dvd) {
         if (quantityOrder >= MAX_NUMBER_ORDER) {
-            System.out.println("Giỏ hàng đã đầy! Không thể thêm DVD.");
+            System.out.println("Cart is full! Cannot add more DVDs.");
             return;
         }
         listDVDInCart.add(dvd);
         quantityOrder++;
-        System.out.println("Đã thêm DVD '" + dvd.getName() + "' vào giỏ hàng.");
+        System.out.println("Added DVD '" + dvd.getName() + "' to cart.");
     }
 
     public double totalCost() {
@@ -41,28 +41,28 @@ public class Cart {
 
     public void print() {
         if (listDVDInCart.isEmpty()) {
-            System.out.println("Giỏ hàng trống.");
+            System.out.println("Cart is empty.");
             return;
         }
-        System.out.println("Danh sách DVD trong giỏ hàng:");
+        System.out.println("List of DVDs in cart:");
         for (DVD dvd : listDVDInCart) {
-            System.out.println("- " + dvd.getName() + " - Giá: " + dvd.getPrice());
+            System.out.println("- " + dvd.getName() + " - Price: " + dvd.getPrice());
         }
-        System.out.println("Tổng giá trị: " + totalCost());
+        System.out.println("Total cost: " + totalCost());
     }
 
     public void searchById(int dvdId) {
-        System.out.println("Chức năng tìm kiếm theo ID chưa được triển khai.");
+        System.out.println("Search by ID function not yet implemented.");
     }
 
     public void searchByTitle(String dvdTitle) {
         for (DVD dvd : listDVDInCart) {
             if (dvd.getName().equals(dvdTitle)) {
-                System.out.println("Thông tin DVD:");
+                System.out.println("DVD Information:");
                 dvd.displayDVDInfo();
                 return;
             }
         }
-        System.out.println("Không tìm thấy DVD '" + dvdTitle + "' trong giỏ hàng.");
+        System.out.println("DVD '" + dvdTitle + "' not found in cart.");
     }
 }

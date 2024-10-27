@@ -15,5 +15,13 @@ public class Aims {
 
         System.out.println("Total Cost is: ");
         System.out.println(anOrder.totalCost());
+
+        System.out.println("List before remove:");
+        anOrder.print();
+
+        anOrder.removeDigitalVideoDisc("Star Wars");
+
+        System.out.println("\nList after remove:");
+        anOrder.print(); 
     }
 }

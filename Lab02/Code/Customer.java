@@ -15,30 +15,30 @@ public class Customer {
 
     public void register() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Đăng ký tài khoản mới:");
-        System.out.print("Nhập tên: ");
+        System.out.println("Register new account:");
+        System.out.print("Enter name: ");
         name = scanner.nextLine();
-        System.out.print("Nhập địa chỉ: ");
+        System.out.print("Enter address: ");
         address = scanner.nextLine();
-        System.out.print("Nhập số điện thoại: ");
+        System.out.print("Enter phone number: ");
         phoneNumber = scanner.nextInt();
         scanner.nextLine();
-        System.out.print("Nhập email: ");
+        System.out.print("Enter email: ");
         email = scanner.nextLine();
-        System.out.println("Đăng ký thành công!");
+        System.out.println("Registration successful!");
     }
 
     public void login() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Đăng nhập:");
-        System.out.print("Nhập tên: ");
+        System.out.println("Login:");
+        System.out.print("Enter name: ");
         String inputName = scanner.nextLine();
-        System.out.print("Nhập email: ");
+        System.out.print("Enter email: ");
         String inputEmail = scanner.nextLine();
         if (inputName.equals(name) && inputEmail.equals(email)) {
-            System.out.println("Đăng nhập thành công!");
+            System.out.println("Login successful!");
         } else {
-            System.out.println("Tên hoặc email không đúng. Vui lòng thử lại!");
+            System.out.println("Incorrect name or email. Please try again!");
         }
     }
 
@@ -47,7 +47,7 @@ public class Customer {
     }
 
     public void placeOrder() {
-        System.out.println("Đặt hàng thành công!");
+        System.out.println("Order placed successfully!");
         cart.print();
         cart = new Cart();
     }
@@ -56,14 +56,14 @@ public class Customer {
         List<DVD> searchResults = new ArrayList<>();
         for (DVD dvd : dvdList) {
             if (dvd.getName().toLowerCase().contains(keyword.toLowerCase()) ||
-                dvd.getDescription().toLowerCase().contains(keyword.toLowerCase())) {
+                    dvd.getDescription().toLowerCase().contains(keyword.toLowerCase())) {
                 searchResults.add(dvd);
             }
         }
         if (searchResults.isEmpty()) {
-            System.out.println("Không tìm thấy DVD nào.");
+            System.out.println("No DVDs found.");
         } else {
-            System.out.println("Kết quả tìm kiếm:");
+            System.out.println("Search results:");
             for (DVD dvd : searchResults) {
                 dvd.displayDVDInfo();
             }
@@ -78,9 +78,9 @@ public class Customer {
             }
         }
         if (filteredDVDs.isEmpty()) {
-            System.out.println("Không tìm thấy DVD nào thuộc thể loại " + genre + ".");
+            System.out.println("No DVDs found for genre " + genre + ".");
         } else {
-            System.out.println("Danh sách DVD thuộc thể loại " + genre + ":");
+            System.out.println("DVDs in genre " + genre + ":");
             for (DVD dvd : filteredDVDs) {
                 dvd.displayDVDInfo();
             }
@@ -88,7 +88,6 @@ public class Customer {
     }
 
     public void addReview(DVD dvd, String review, int rating) {
-        System.out.println("Đã thêm đánh giá cho DVD " + dvd.getName());
+        System.out.println("Review added for DVD " + dvd.getName());
     }
-
 }
