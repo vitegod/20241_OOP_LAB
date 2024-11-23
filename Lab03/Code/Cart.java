@@ -32,11 +32,17 @@ public class Cart {
     }
 
     public void addDigitalVideoDisc(DVD[] dvdList) {
-        
+        if (dvdList == null) {
+            return;
+        }
+        for (DVD dvd : dvdList) {
+            addDigitalVideoDisc(dvd);
+        }
     }
 
     public void addDigitalVideoDisc(DVD dvd1, DVD dvd2) {
-        
+        addDigitalVideoDisc(dvd1);
+        addDigitalVideoDisc(dvd2);
     }
 
     public double totalCost() {
@@ -60,17 +66,45 @@ public class Cart {
     }
 
     public void searchById(int dvdId) {
-        System.out.println("Search by ID function not yet implemented.");
-    }
-
-    public void searchByTitle(String dvdTitle) {
         for (DVD dvd : listDVDInCart) {
-            if (dvd.getName().equals(dvdTitle)) {
-                System.out.println("DVD Information:");
+            if (dvd.getId() == dvdId) {
+                System.out.println("DVD found:");
                 dvd.displayDVDInfo();
                 return;
             }
         }
-        System.out.println("DVD '" + dvdTitle + "' not found in cart.");
+        System.out.println("No DVD found with ID: " + dvdId);
+    }
+    
+    public void searchByTitle(String dvdTitle) {
+        boolean found = false;
+        for (DVD dvd : listDVDInCart) {
+            if (dvd.isMatch(dvdTitle)) { 
+                System.out.println("DVD found:");
+                dvd.displayDVDInfo();
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("No DVD found with title: " + dvdTitle);
+        }
+    }
+
+    public void printCart() {
+        if (listDVDInCart.isEmpty()) {
+            System.out.println("Cart is empty.");
+            return;
+        }
+
+        System.out.println("***********************CART***********************");
+        System.out.println("Ordered Items:");
+
+        for (int i = 0; i < listDVDInCart.size(); i++) {
+            DVD dvd = listDVDInCart.get(i);
+            System.out.println((i + 1) + ". " + dvd.toString()); 
+        }
+
+        System.out.println("Total cost: " + totalCost());
+        System.out.println("***************************************************");
     }
 }
