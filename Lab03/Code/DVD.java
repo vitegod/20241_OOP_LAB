@@ -13,6 +13,10 @@ public class DVD {
     String category;
     String author;
 
+    public DVD(String name) {
+        this.name = name;
+    }
+
     public DVD(String name, String genre, String author, int releaseDate, double price) {
         this.name = name;
         this.genre = genre;
@@ -47,6 +51,10 @@ public class DVD {
         this.name = name;
         this.genre = genre;
         this.releaseDate = releaseDate;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getName() {
