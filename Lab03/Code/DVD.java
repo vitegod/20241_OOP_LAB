@@ -3,9 +3,6 @@ package Lab03.Code;
 import java.util.List;
 
 public class DVD {
-    private static int nbDigitalVideoDiscs = 0;
-
-    private int id;
     String name;
     String description;
     double price;
@@ -15,30 +12,6 @@ public class DVD {
     int releaseDate;
     String category;
     String author;
-
-    public DVD(String name) {
-        this.name = name;
-    }
-
-    public DVD(String name, String description, double price, int quantityInStock, int rating, String genre,
-        int releaseDate, String category, String author) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.quantityInStock = quantityInStock;
-        this.rating = rating;
-        this.genre = genre;
-        this.releaseDate = releaseDate;
-        this.category = category;
-        this.author = author;
-
-        nbDigitalVideoDiscs++;
-        this.id = nbDigitalVideoDiscs; 
-    }
-
-    public int getId() {
-        return id;
-    }
 
     public DVD(String name, String genre, String author, int releaseDate, double price) {
         this.name = name;
@@ -74,10 +47,6 @@ public class DVD {
         this.name = name;
         this.genre = genre;
         this.releaseDate = releaseDate;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getName() {
