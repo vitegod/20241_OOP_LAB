@@ -3,6 +3,9 @@ package Lab03.Code;
 import java.util.List;
 
 public class DVD {
+    private static int nbDigitalVideoDiscs = 0; 
+
+    private int id;
     String name;
     String description;
     double price;
@@ -10,8 +13,29 @@ public class DVD {
     int rating;
     String genre;
     int releaseDate;
-    String category;
+    // String category;
     String author;
+
+
+    public DVD(String name, String description, double price, int quantityInStock, int rating, String genre,
+               int releaseDate, String category, String author) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.quantityInStock = quantityInStock;
+        this.rating = rating;
+        this.genre = genre;
+        this.releaseDate = releaseDate;
+        // this.category = category;
+        this.author = author;
+
+        nbDigitalVideoDiscs++;
+        this.id = nbDigitalVideoDiscs; 
+    }
+
+    public int getId() {
+        return id;
+    }
 
     public DVD(String name) {
         this.name = name;
@@ -108,6 +132,16 @@ public class DVD {
         System.out.println("- Rating: " + rating);
         System.out.println("- Genre: " + genre);
         System.out.println("- Release year: " + releaseDate);
+    }
+
+    public String toString() {
+        return "DVD - " + name + " - " + author + " - " + releaseDate + ": " + price + " $";
+    }
+    
+    public boolean isMatch(String title) {
+        String lowerCaseTitle = name.toLowerCase();
+        String lowerCaseInput = title.toLowerCase();
+        return lowerCaseTitle.contains(lowerCaseInput);
     }
 
     public String getGenre() {
