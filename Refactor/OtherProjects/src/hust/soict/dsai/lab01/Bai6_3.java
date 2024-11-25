@@ -1,3 +1,4 @@
+package hust.soict.dsai.lab01;
 import java.util.*;
 public class Bai6_3 {
 	public static void main(String[] arg ) {
