@@ -42,7 +42,7 @@ public class Cart {
         return total;
     }
 
-    public void print() {
+    public void printCart() {
         if (listDVDInCart.isEmpty()) {
             System.out.println("Cart is empty.");
             return;

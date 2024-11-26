@@ -1,17 +1,18 @@
 package hust.soict.dsai.test.disc;
 
-package Lab03.Code;
+import java.util.*;
+import hust.soict.dsai.aims.disc.*;
 
 public class DiscTest {
     public static void main(String[] args) {
         DVD dvd = new DVD("The Lion King", "Animation", "Animation", "Roger Allers", 87, 19.95f);
 
-        DigitalVideoDisc digitalVideoDisc = new DigitalVideoDisc(
+        DVD digitalVideoDisc = new DVD(
                 dvd.getName(), 
                 dvd.getCategory(), 
                 dvd.getGenre(), 
                 dvd.getAuthor(),  
-                dvd.releaseDate, 
+                dvd.getReleaseDate(), 
                 dvd.getPrice()
         );
 

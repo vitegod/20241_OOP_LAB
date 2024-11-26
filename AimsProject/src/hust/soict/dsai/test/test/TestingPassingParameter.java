@@ -1,5 +1,7 @@
 package hust.soict.dsai.test.test;
 
+import hust.soict.dsai.aims.disc.*;
+
 public class TestingPassingParameter {
     public static void main(String[] args) {
         DVD jungleDVD = new DVD("Jungle");

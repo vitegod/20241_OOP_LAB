@@ -20,11 +20,11 @@ public class Aims {
         System.out.println(anOrder.totalCost());
 
         System.out.println("List before remove:");
-        anOrder.print();
+        anOrder.printCart();
 
         anOrder.removeDigitalVideoDisc("Star Wars");
 
         System.out.println("\nList after remove:");
-        anOrder.print(); 
+        anOrder.printCart(); 
     }
 }

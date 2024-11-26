@@ -1,5 +1,8 @@
 package hust.soict.dsai.aims.store;
 
+import java.util.*;
+import hust.soict.dsai.aims.disc.*;
+
 public class Store {
     private DVD[] itemsInStore;
     private int numberOfItems; 
