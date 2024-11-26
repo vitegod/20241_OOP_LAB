@@ -22,7 +22,6 @@ public class Store {
     public void removeDVD(String dvdTitle) {
         for (int i = 0; i < numberOfItems; i++) {
             if (itemsInStore[i].getName().equals(dvdTitle)) {
-                // Shift elements to remove the DVD
                 for (int j = i; j < numberOfItems - 1; j++) {
                     itemsInStore[j] = itemsInStore[j + 1];
                 }
