@@ -12,6 +12,15 @@ public class DVD {
     int releaseDate;
     String category;
     String author;
+    private int dvdID;
+
+    public int getId() {
+        return dvdID;
+    }
+
+    public void setId(int dvdID) {
+        this.dvdID = dvdID;
+    }
 
     public DVD(String name) {
     	this.name = name;

@@ -19,5 +19,12 @@ public class CartTest {
         cart.addDigitalVideoDisc(dvd3);
 
         cart.printCart();
+        
+        cart.searchById(1);
+        cart.searchById(4);
+
+        cart.searchByTitle("The Lion King");
+        cart.searchByTitle("Star Wars");
+        cart.searchByTitle("The Matrix");
     }
 }

@@ -55,7 +55,14 @@ public class Cart {
     }
 
     public void searchById(int dvdId) {
-        System.out.println("Search by ID function not yet implemented.");
+        for (DVD dvd : listDVDInCart) {
+            if (dvd.getId() == dvdId) {
+                System.out.println("DVD found:");
+                dvd.displayDVDInfo();
+                return; 
+            }
+        }
+        System.out.println("No DVD found with ID: " + dvdId);
     }
 
     public void searchByTitle(String dvdTitle) {
