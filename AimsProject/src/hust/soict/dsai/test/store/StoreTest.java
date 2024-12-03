@@ -1,6 +1,6 @@
 package hust.soict.dsai.test.store;
 
-import hust.soict.dsai.aims.disc.DVD;
+import hust.soict.dsai.aims.media.DVD;
 import hust.soict.dsai.aims.store.Store;
 
 public class StoreTest {
@@ -15,8 +15,8 @@ public class StoreTest {
         store.addDVD(dvd2);
         store.addDVD(dvd3);
 
-        store.removeDVD("Star Wars");
+        store.removeMedia("Star Wars");
 
-        store.removeDVD("The Matrix");
+        store.removeMedia("The Matrix");
     }
 }

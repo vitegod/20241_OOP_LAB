@@ -1,7 +1,7 @@
 package hust.soict.dsai.test.disc;
 
 import java.util.*;
-import hust.soict.dsai.aims.disc.*;
+import hust.soict.dsai.aims.media.DVD;
 
 public class DiscTest {
     public static void main(String[] args) {

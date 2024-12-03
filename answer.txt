@@ -1,12 +1,47 @@
-1. Is JAVA a Pass by Value or a Pass by Reference programming language?
-Java is a programming language that is passed by value.
+Alternatively, to compare items in the cart, instead of using Comparator, we can use the Comparable interface and override the compareTo()method. You can refer to the Java docs to see the information of this interface. 
+Suppose we are taking this Comparable interface approach.
+1. What class should implement the Comparable interface?
+2. In those classes, how should you implement the compareTo()method be to reflect the ordering that we want?
+3. Can we have two ordering rules of the item (by title then cost and by cost then title) if we use this Comparable interface approach?
+4. Suppose the DVDs has a different ordering rule from the other media types, that is by title, then decreasing length, then cost. How would you modify your code to allow this?
 
-2. After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two objects still remain?
-Because swap(jungleDVD,cinderellaDVD) simply switches the values in the title field and not the object references, the titles stay the same after calling the method.
-The only difference between the objects is that their title fields are switched, but the jungleDVD and cinderellaDVD references still point to the same objects.
+Trả lời:
+1. Nên implement giao diện Comparable cho lớp Media và/hoặc các lớp con của nó (Book, Disc, DVD, CompactDisc), tùy thuộc vào so sánh 2 đối tượng thuộc lớp nào.
 
-3. After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed?
-Because changeTitle() uses the value from CinderellaDVD to directly modify its title field, the title of jungleDVD changes.obtainTitle().
+2. Ví dụ với SortByTitleThenCost: ở file Media.java và 
+public class Media implements Comparable<Media> {
+    @Override
+    public int compareTo(Media other) {
+        int titleComparison = this.getTitle().compareTo(other.getTitle());
+        if (titleComparison != 0) {
+            return titleComparison;
+        } else {
+            return Double.compare(this.getCost(), other.getCost()); 
+        }
+    }
+}
 
-4. Write a toString() method for the DigitalVideoDisc class. What should be the return type of this method?
-String should be the return type.​17:18/-strong/-heart:>:o:-((:-h 
+3. Không thể viết 2 hàm overload nhau cho 2 luật sắp xếp cùng một lúc cho 1 lớp nếu dùng giao diện Comparable, tuy nhiên có thể thêm tham số cho hàm.
+
+4. Có thể override hàm compareTo như sau: 
+public class DVD extends Disc implements Playable {
+    @Override
+    public int compareTo(Media other) {
+        if (other instanceof DVD) { 
+            DVD otherDVD = (DVD) other;
+            int titleComparison = this.getTitle().compareTo(otherDVD.getTitle());
+            if (titleComparison != 0) {
+                return titleComparison;
+            } else {
+                int lengthComparison = Integer.compare(otherDVD.getLength(), this.getLength());
+                if (lengthComparison != 0) {
+                    return lengthComparison;
+                } else {
+                    return Double.compare(this.getCost(), otherDVD.getCost());
+                }
+            }
+        } else {
+            return super.compareTo(other); 
+        }
+    }
+}
