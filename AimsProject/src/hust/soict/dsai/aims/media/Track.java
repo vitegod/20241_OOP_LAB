@@ -1,47 +1,40 @@
-package hust.soict.dsai.aims.media;
+package hust.soict.vp.aims.media;
 
 public class Track implements Playable {
-    private String title;
-    private int length;
+	private String title;
+	private int length;
 
-    public Track(String title, int length) {
-        this.title = title;
-        this.length = length;
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public String getTitle() {
-        return title;
-    }
+	public int getLength() {
+		return length;
+	}
 
-    public int getLength() {
-        return length;
-    }
+	public Track() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public Track(String title, int length) {
+		super();
+		this.title = title;
+		this.length = length;
+	}
+	
+	public void play() {
+		System.out.println("Playing Track: " + this.getTitle());
+		System.out.println("Track length: " + this.getLength());
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+	    if (this == o) return true;  // cùng là 1 đối tượng
+	    
+	    if (o == null || getClass() != o.getClass()) return false;  // đối tượng null hoặc không cùng lớp
+	    
+	    Track track = (Track) o;  // ép kiểu để so sánh
+	    return this.title.equals(track.title) && this.length == track.length;
+	}
 
-    @Override
-    public void play() {
-        System.out.println("Playing track: " + this.getTitle());
-        System.out.println("Track length: " + this.getLength());
-    }
-    
-    @Override
-    public void play() {
-        System.out.println("Playing CD: " + this.getTitle());
-        System.out.println("CD length: " + this.getLength());
-        for (Track track : tracks) {
-            track.play();
-        }
-    }
-    
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Track track = (Track) o;
-        return this.getTitle().equals(track.getTitle()) && 
-               this.getLength() == track.getLength();
-    }
 }

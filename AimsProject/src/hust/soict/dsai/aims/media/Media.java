@@ -1,69 +1,88 @@
-package hust.soict.dsai.aims.media;
+package hust.soict.vp.aims.media;
 
 import java.util.Comparator;
 
 public abstract class Media {
-    private int id;
-    private String title;
-    private String category;
-    private double cost;
+	private int id;
+	private String title;
+	private String category;
+	private float cost;
+	
+	public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
+	public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
 
-    public Media(int id, String title, String category, double cost) {
-        this.id = id;
-        this.title = title;
-        this.category = category;
-        this.cost = cost;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public int getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public double getCost() {
-        return cost;
-    }
-    
-    public void setId(int id) {
+	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
 	}
 
 	public void setTitle(String title) {
 		this.title = title;
 	}
 
+	public String getCategory() {
+		return category;
+	}
+
 	public void setCategory(String category) {
 		this.category = category;
 	}
 
-	public void setCost(double cost) {
+	public float getCost() {
+		return cost;
+	}
+
+	public void setCost(float cost) {
 		this.cost = cost;
 	}
 
-	public abstract void play();
+	public Media() {
+		// TODO Auto-generated constructor stub
+	}
 
-	public abstract void displayInfo();
-    
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Media media = (Media) o;
-        return this.getTitle().equals(media.getTitle());
-    }
-    
-    public static final Comparator<Media> COMPARE_BY_TITLE_COST = Comparator.comparing(Media::getTitle).thenComparing(Media::getCost, Comparator.reverseOrder());
+	public Media(int id, String title, String category, float cost) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.category = category;
+		this.cost = cost;
+	}
 
-    public static final Comparator<Media> COMPARE_BY_COST_TITLE = Comparator.comparing(Media::getCost, Comparator.reverseOrder()).thenComparing(Media::getTitle);
+	public String toString() {
+		return "Media - id: " + this.getId() +
+				" - title: " + this.getTitle() +
+				" - category: " + this.getCategory() +
+				" - cost: " + this.getCost() + "$";
+	}
+	
+	public boolean isMatch(String title) {
+	    if (title == null || this.getTitle() == null || title.trim().isEmpty())
+	        return false;
+
+	    String[] words = title.toLowerCase().split("\\s+"); // bởi vì không phân biệt chữ hoa chữ thường
+	    String loweredThisTitle = this.getTitle().toLowerCase();
+
+	    for (String word : words) {
+	        if (loweredThisTitle.contains(word)) return true;
+	    }
+
+	    return false;
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+	    if (this == o) return true; // cùng là 1 đối tượng
+	    
+	    if (o == null || getClass() != o.getClass()) return false;  // đối tượng null hoặc khác lớp
+	    
+	    Media media = (Media) o;  // ép kiểu để so sánh
+	    return this.title.equals(media.title);
+	}
 }

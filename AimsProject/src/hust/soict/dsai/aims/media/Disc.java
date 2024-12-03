@@ -1,36 +1,30 @@
-package hust.soict.dsai.aims.media;
+package hust.soict.vp.aims.media;
 
 public class Disc extends Media {
-    protected int length;
-    protected String director;
+	private int length;
+	private String director;
 
-    public Disc(int id, String title, String category, double cost, double d, String director) {
-        super(id, title, category, cost);
-        this.length = (int) d;
-        this.director = director;
-    }
+	public int getLength() {
+		return length;
+	}
 
-    public int getLength() {
-        return length;
-    }
+	public String getDirector() {
+		return director;
+	}
 
-    public String getDirector() {
-        return director;
-    }
+	public Disc(int id, String title, String category, float cost, int length, String director) {
+		super(id, title, category, cost);
+		this.length = length;
+		this.director = director;
+	}
+	
+	public Disc(int id, String title, String category, float cost, String director) {
+		super(id, title, category, cost);
+		this.director = director;
+	}
 
-    
-    @Override
-    public void play() {
-    
-    }
+	public Disc() {
+		// TODO Auto-generated constructor stub
+	}
 
-    @Override
-    public void displayInfo() {
-        System.out.println("ID: " + this.getId());
-        System.out.println("Title: " + this.getTitle());
-        System.out.println("Category: " + this.getCategory());
-        System.out.println("Cost: " + this.getCost());
-        System.out.println("Length: " + this.getLength());
-        System.out.println("Director: " + this.getDirector());
-    }
 }
