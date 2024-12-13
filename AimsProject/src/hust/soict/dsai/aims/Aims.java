@@ -1,14 +1,14 @@
-package hust.soict.vp.aims;
+package hust.soict.dsai.aims;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import hust.soict.vp.aims.cart.Cart;
-import hust.soict.vp.aims.media.Book;
-import hust.soict.vp.aims.media.CompactDisc;
-import hust.soict.vp.aims.media.DVD;
-import hust.soict.vp.aims.media.Media;
-import hust.soict.vp.aims.media.Track;
-import hust.soict.vp.aims.store.Store;
+import hust.soict.dsai.aims.cart.Cart;
+import hust.soict.dsai.aims.media.Book;
+import hust.soict.dsai.aims.media.CompactDisc;
+import hust.soict.dsai.aims.media.DVD;
+import hust.soict.dsai.aims.media.Media;
+import hust.soict.dsai.aims.media.Track;
+import hust.soict.dsai.aims.store.Store;
 
 public class Aims {
 	

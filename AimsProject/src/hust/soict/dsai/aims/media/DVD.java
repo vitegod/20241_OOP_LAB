@@ -1,4 +1,4 @@
-package hust.soict.vp.aims.media;
+package hust.soict.dsai.aims.media;
 
 public class DVD extends Disc implements Playable {
 	private static int nbDVDs = 0;

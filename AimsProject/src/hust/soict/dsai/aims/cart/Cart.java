@@ -1,10 +1,10 @@
-package hust.soict.vp.aims.cart;
+package hust.soict.dsai.aims.cart;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
 
-import hust.soict.vp.aims.media.Media; 
+import hust.soict.dsai.aims.media.Media; 
 
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20; // số lượng media tối đa có thể có

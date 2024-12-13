@@ -1,4 +1,4 @@
-package hust.soict.vp.aims.media;
+package hust.soict.dsai.aims.media;
 
 import java.util.Comparator;
 

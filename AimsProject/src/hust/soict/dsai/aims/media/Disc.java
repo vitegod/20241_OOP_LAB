@@ -1,4 +1,4 @@
-package hust.soict.vp.aims.media;
+package hust.soict.dsai.aims.media;
 
 public class Disc extends Media {
 	private int length;
