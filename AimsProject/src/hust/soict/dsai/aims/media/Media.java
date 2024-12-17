@@ -1,88 +1,159 @@
 package hust.soict.dsai.aims.media;
 
+import java.time.LocalDate;
 import java.util.Comparator;
 
 public abstract class Media {
-	private int id;
-	private String title;
-	private String category;
-	private float cost;
-	
-	public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
-	public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
+    private int id;
+    private String title;
+    private String category;
+    private LocalDate dateAdded;
+    private float cost;
 
-	public int getId() {
-		return id;
-	}
+    public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
+    public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public Media() {
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public Media(int id, String title, String category, float cost) {
+        this(category, title, cost);
+        this.setId(id);
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public Media(String title) {
+        this.setTitle(title);
+    }
 
-	public String getCategory() {
-		return category;
-	}
+    public Media(String title, String category, float cost) {
+        this(title);
+        this.setCategory(category);
+        this.setCost(cost);
+    }
 
-	public void setCategory(String category) {
-		this.category = category;
-	}
+    public Media(String title, float cost) {
+        this(title);
+        this.setCost(cost);
+    }
 
-	public float getCost() {
-		return cost;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setCost(float cost) {
-		this.cost = cost;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public Media() {
-		// TODO Auto-generated constructor stub
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public Media(int id, String title, String category, float cost) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.category = category;
-		this.cost = cost;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public String toString() {
-		return "Media - id: " + this.getId() +
-				" - title: " + this.getTitle() +
-				" - category: " + this.getCategory() +
-				" - cost: " + this.getCost() + "$";
-	}
-	
-	public boolean isMatch(String title) {
-	    if (title == null || this.getTitle() == null || title.trim().isEmpty())
-	        return false;
+    public String getCategory() {
+        return category;
+    }
 
-	    String[] words = title.toLowerCase().split("\\s+"); // bởi vì không phân biệt chữ hoa chữ thường
-	    String loweredThisTitle = this.getTitle().toLowerCase();
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
-	    for (String word : words) {
-	        if (loweredThisTitle.contains(word)) return true;
-	    }
+    public float getCost() {
+        return cost;
+    }
 
-	    return false;
-	}
-	
-	@Override
-	public boolean equals(Object o) {
-	    if (this == o) return true; // cùng là 1 đối tượng
-	    
-	    if (o == null || getClass() != o.getClass()) return false;  // đối tượng null hoặc khác lớp
-	    
-	    Media media = (Media) o;  // ép kiểu để so sánh
-	    return this.title.equals(media.title);
-	}
+    public void setCost(float cost) {
+        this.cost = cost;
+    }
+
+    public boolean isMatch(String title) {
+        return this.getTitle().equals(title);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof Media)) {
+            return false;
+        }
+        Media other = (Media) obj;
+        if (this.title == null) {
+            return other.title == null;
+        }
+        return this.title.equals(other.title);
+    }
+
+    public int compareTo(Media obj) throws NullPointerException {
+        try {
+            for (int i = 0; i < this.title.length() && i < obj.getTitle().length(); i++) {
+                if ((int) this.title.charAt(i) == (int) obj.getTitle().charAt(i)) {
+                    continue;
+                } else {
+                    return ((int) this.title.charAt(i) - (int) obj.getTitle().charAt(i));
+                }
+            }
+            if (!(this.title.length() == obj.getTitle().length())) {
+                return (this.title.length() - obj.getTitle().length());
+            }
+            for (int i = 0; i < this.category.length() && i < obj.getCategory().length(); i++) {
+                if ((int) this.category.charAt(i) == (int) obj.getCategory().charAt(i)) {
+                    continue;
+                } else {
+                    return ((int) this.category.charAt(i) - (int) obj.getTitle().charAt(i));
+                }
+            }
+            if (!(this.category.length() == obj.getCategory().length())) {
+                return (this.category.length() - obj.getCategory().length());
+            }
+            return 0;
+        } catch (NullPointerException e) {
+            throw e;
+        }
+    }
+
+    public boolean search(String title) {
+        return this.title.toLowerCase().contains(title.toLowerCase());
+    }
+
+    public LocalDate getDateAdded() {
+        return dateAdded;
+    }
+
+    public void setDateAdded(LocalDate date) {
+        this.dateAdded = date;
+    }
+
+    public abstract String getType();
+
+    public abstract String getDetails();
+
+    public String toString() {
+        return this.getDetails();
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getId();
+        result = 31 * result + getTitle().hashCode();
+        result = 31 * result + getCategory().hashCode();
+        result = 31 * result + getDateAdded().hashCode();
+        result = 31 * result + Float.floatToIntBits(getCost());
+        return result;
+    }
+
+    public boolean isAddedBefore(LocalDate date) {
+        return this.getDateAdded().isBefore(date);
+    }
+
+    public void updateCost(float newCost) {
+        this.setCost(newCost);
+        System.out.println("Cost updated for " + this.getTitle() + " to $" + newCost);
+    }
 }
